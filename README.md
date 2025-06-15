@@ -25,6 +25,30 @@ FastTrackHire is an AI-powered mock interview web application built with **Pytho
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/MockInterviewPro.git
-cd MockInterviewPro
+git clone https://github.com/yourusername/MockInterviews.git
+cd MockInterviews
 ```
+## 🛠 Installation Instructions
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+### Requirement.txt
+```bash
+streamlit
+requests
+python-docx
+pdfplumber
+```
+### 3. Run the App
+```bash
+streamlit run app.py
+```
+### Note:
+Place your secrets.toml file in (.streamlit/) folder.
+
+
+## Contact:
+
