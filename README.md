@@ -1,4 +1,4 @@
-# MockInterviews
+# 🚀 FastTrackHire
 
 FastTrackHire is an AI-powered mock interview web application built with **Python**, **Streamlit**, and **LLMs (LLaMA3-8B-8192)** using the **Grok API**. It helps users simulate company-specific interview experiences by analyzing their resume and tailoring questions accordingly.
 
