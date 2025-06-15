@@ -99,10 +99,10 @@ st.markdown("""
     }
     
     .user-message {
-   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+   background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%) !important;
    color: white !important;
    border-radius: 25px 25px 8px 25px;
-   margin-left: 20%;
+   margin-left: 10%;
    margin-bottom: 1.5rem;
    border: 1px solid rgba(255,255,255,0.15);
    box-shadow: 
@@ -115,7 +115,16 @@ st.markdown("""
    transform: translateY(0);
    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
    overflow: hidden;
+   }
+   .user-message .top-right-icon {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 10;
+    width: 20px;
+    height: 20px;
 }
+
     
     .user-message::before {
         content: '👤';
@@ -355,9 +364,9 @@ st.markdown("""
 st.markdown(f"""
 <div class="header-wrapper">
     <div class="header-content">
-        <h1 class="header-title">🚀 Interview Fever</h1>
+        <h1 class="header-title">🚀 FastTrackHire</h1>
         <p style="font-size: 1.2rem; opacity: 0.9; margin: 1rem 0 0 0;">
-            AI-Powered Technical Interview Platform
+            Fast-Track Your Way to Success.
         </p>
     </div>
 </div>
@@ -416,7 +425,7 @@ def process_pdf(file):
     
     return pdf_text
 
-# Enhanced Sidebar
+# Sidebar
 import re
 import streamlit as st
 
