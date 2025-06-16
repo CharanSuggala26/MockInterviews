@@ -5,8 +5,6 @@ import json
 import streamlit as st
 from groq import Groq
 
-#GROQ_API_KEY = "xai-inmQSGvOzLNSuhoHZrYi4mzZI0OQsFNrMdRf5i0KXCwKXzrYCSdvIFwVxjB937DhGEqY3cZOXWc3SaRL"
-
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 if "progress" not in st.session_state:
@@ -20,7 +18,6 @@ if "current_stage" not in st.session_state:
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
 
-# Initialize Groq client
 GROQ_API_KEY=st.secrets["GROQ_API_KEY"]
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
@@ -32,7 +29,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Enhanced Custom CSS with modern design
+# CSS Components
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -360,7 +357,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Enhanced Header Section
+# Header Section
 st.markdown(f"""
 <div class="header-wrapper">
     <div class="header-content">
@@ -491,7 +488,7 @@ if not st.session_state.pdf_text:
         """, unsafe_allow_html=True)
     st.stop()
 
-# Enhanced Input Section
+# Input Section
 with st.container():
     st.markdown('<div class="input-container">', unsafe_allow_html=True)
     
