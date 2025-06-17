@@ -1,8 +1,16 @@
+import streamlit as st
+# Page configuration
+st.set_page_config(
+    page_title="FastTrackHire",
+    page_icon="🚀",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 import PyPDF2
 import pdfplumber
 import os
 import json
-import streamlit as st
 from groq import Groq
 import pyodbc
 import hashlib
@@ -88,13 +96,6 @@ if "show_signup" not in st.session_state:
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
-# Page configuration
-st.set_page_config(
-    page_title="FastTrackHire",
-    page_icon="🚀",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # Enhanced CSS Components
 st.markdown("""
