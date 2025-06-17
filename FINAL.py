@@ -512,7 +512,7 @@ with st.container():
                 st.session_state.question_count += 1
                 st.session_state.progress = min(st.session_state.question_count * 20, 100)
 
-# Generate AI Response
+# Response
 if st.session_state.chat_history and st.session_state.chat_history[-1]["role"] == "user" and not st.session_state.interview_complete:
     prompt = f"""
 You are an interviewer from **{st.session_state.company}** conducting a technical interview.
