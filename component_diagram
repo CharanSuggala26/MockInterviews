@@ -1,0 +1,35 @@
+// FastTrackHire Architecture - UML Component Diagram
+digraph {
+	bgcolor=transparent fontname=Arial fontsize=12 rankdir=TB size="10,8"
+	node [fillcolor="#e2e8f0" fontcolor="#1e293b" shape=component style=filled]
+	edge [color="#7c3aed" fontcolor="#1e293b"]
+	subgraph cluster_user {
+		color="#3b82f6" label=User style=dashed
+		User [label="Browser
+<<actor>>" fillcolor="#a5b4fc" shape=actor]
+	}
+	subgraph cluster_streamlit {
+		fillcolor="rgba(255,255,255,0.1)" label="Streamlit App" style=filled
+		Frontend [label="Streamlit Frontend
+[UI: Login, Chat, Sidebar]" ports=":e"]
+		Backend [label="Streamlit Backend
+[Logic: Auth, Session, PDF]" ports=":e"]
+	}
+	subgraph cluster_external {
+		color="#3b82f6" label="External Services" style=dashed
+		MongoDB [label="MongoDB
+[Users, Sessions]
+<<database>>" fillcolor="#cbd5e1" shape=cylinder]
+		GroqAPI [label="Groq API
+[AI Questions]
+<<external>>" fillcolor="#a5b4fc"]
+		pdfplumber [label="pdfplumber
+[Resume Extraction]
+<<library>>" fillcolor="#a5b4fc"]
+	}
+	User -> Frontend:e [label="HTTP Requests" style=bold]
+	Frontend -> Backend [label="Internal Calls"]
+	Backend -> MongoDB [label="CRUD Operations" constraint=true]
+	Backend -> GroqAPI [label="REST API Calls" constraint=true]
+	Backend -> pdfplumber [label="Local Processing" constraint=true]
+}

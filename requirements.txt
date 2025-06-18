@@ -3,3 +3,4 @@ pdfplumber
 streamlit
 groq
 pymongo
+graphviz

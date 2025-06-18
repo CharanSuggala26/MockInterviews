@@ -1,0 +1,49 @@
+// FastTrackHire Workflow - UML Activity Diagram
+digraph {
+	bgcolor=transparent fontname=Arial fontsize=12 rankdir=TB size="10,12"
+	node [fillcolor="#e2e8f0" fontcolor="#1e293b" shape=box style="rounded,filled"]
+	edge [color="#7c3aed" fontcolor="#1e293b"]
+	Start [fillcolor="#7c3aed" shape=circle style=filled width=0.5]
+	VisitApp [label="Visit App"]
+	AuthCheck [label="Authenticated?" shape=diamond]
+	LoginSignup [label="Login/Signup Page"]
+	AuthSuccess [label="Successful Authentication"]
+	MainApp [label="Access Main App"]
+	UploadResume [label="Upload Resume (PDF)"]
+	SelectCompany [label="Select Target Company"]
+	StartInterview [label="Start Interview\n(\"Hello\" or \"Let's Start\")"]
+	AIGreet [label="AI Greets User by Name"]
+	DSAQuestions [label="AI Asks 3 DSA Questions"]
+	UserResponseDSA [label="User Responds or Says
+\"I don't know\"" shape=diamond]
+	SkipDSA [label="Skip to Next Question"]
+	ResumeQuestions [label="AI Asks 3-4 Resume-Based Questions"]
+	UserResponseResume [label="User Responds or Skips" shape=diamond]
+	SkipResume [label="Skip to Next Question"]
+	InterviewComplete [label="Interview Complete"]
+	AIFeedback [label="AI Provides Feedback"]
+	SaveSession [label="Save Session to MongoDB"]
+	End [fillcolor="#3b82f6" shape=circle style=filled width=0.5]
+	Start -> VisitApp
+	VisitApp -> AuthCheck
+	AuthCheck -> LoginSignup [label=No]
+	LoginSignup -> AuthSuccess
+	AuthSuccess -> MainApp
+	AuthCheck -> MainApp [label=Yes]
+	MainApp -> UploadResume
+	UploadResume -> SelectCompany
+	SelectCompany -> StartInterview
+	StartInterview -> AIGreet
+	AIGreet -> DSAQuestions
+	DSAQuestions -> UserResponseDSA
+	UserResponseDSA -> SkipDSA [label="\"I don't know\""]
+	SkipDSA -> DSAQuestions [constraint=false]
+	UserResponseDSA -> ResumeQuestions [label="Complete 3 Questions"]
+	ResumeQuestions -> UserResponseResume
+	UserResponseResume -> SkipResume [label=Skip]
+	SkipResume -> ResumeQuestions [constraint=false]
+	UserResponseResume -> InterviewComplete [label="Complete Questions"]
+	InterviewComplete -> AIFeedback
+	AIFeedback -> SaveSession
+	SaveSession -> End
+}
