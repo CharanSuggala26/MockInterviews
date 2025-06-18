@@ -392,7 +392,7 @@ def get_user_interviews(user_id):
             conn.close()
     return []
 
-# Header Section
+# Header 
 st.markdown(f"""
 <div class="header-wrapper">
     <div class="header-content">
@@ -525,7 +525,7 @@ with chat_container:
             st.markdown(f'<div class="{bubble_class}">{message["content"]}</div>', 
                         unsafe_allow_html=True)
 
-# PDF processing function
+# PDF processing  using PyPDF2 and pdfplumber
 def process_pdf(file):
     if file.size > 5_000_000:
         st.error("File size too large (max 5MB)")
@@ -648,7 +648,7 @@ if not st.session_state.pdf_text:
     """, unsafe_allow_html=True)
     st.stop()
 
-# Input Section
+# Input 
 with st.container():
     st.markdown('<div class="input-container">', unsafe_allow_html=True)
     
