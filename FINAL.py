@@ -8,9 +8,7 @@ from groq import Groq
 import os
 import base64
 
-# --------------------------
-# Custom CSS for Superb UI with Chat Icons
-# --------------------------
+# CSS Styling
 def load_css():
     st.markdown("""
     <style>
@@ -307,9 +305,7 @@ def load_css():
 
 load_css()
 
-# --------------------------
-# Session State Initialization
-# --------------------------
+# Session States
 def init_session_state():
     session_vars = {
         "chat_history": [],
@@ -333,17 +329,17 @@ def init_session_state():
 
 init_session_state()
 
-# --------------------------
-# Database Configuration
-# --------------------------
-MONGO_URI = st.secrets.get("MONGO_URI", os.getenv("MONGO_URI"))
+# Database Setup
+MONGO_URI = st.secrets.get("MONGO_URI", os.getenv("MONGO_URI", "mongodb://localhost:27017"))
 DB_NAME = "FastTrackHire"
 
 def get_db_connection():
     try:
         client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
         client.admin.command('ping')
-        return client[DB_NAME]
+        db = client[DB_NAME]
+        st.success("✅ Connected to MongoDB successfully!")
+        return db
     except ConnectionFailure as e:
         st.error(f"🔌 Connection Error: {str(e)}")
         return None
@@ -385,12 +381,10 @@ def save_interview_session(user_id, company, resume_text, chat_history, feedback
         return False
 
 if not init_db():
-    st.error("🚨 Failed to initialize database. Please check your connection settings.")
+    st.error("🚨 Failed to initialize database. Please check your MONGO_URI settings in the deployment environment.")
     st.stop()
 
-# --------------------------
-# Authentication Functions
-# --------------------------
+# User Authentication
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -430,9 +424,7 @@ def verify_user(email, password):
         st.error(f"🔐 Error: {str(e)}")
         return None
 
-# --------------------------
 # PDF Processing
-# --------------------------
 def process_pdf(file):
     try:
         with pdfplumber.open(file) as pdf:
@@ -442,9 +434,7 @@ def process_pdf(file):
         st.error(f"📄 Error processing PDF: {str(e)}")
         return None
 
-# --------------------------
-# Authentication UI
-# --------------------------
+# Streamlit UI
 if not st.session_state.logged_in:
     st.markdown("""
     <div class="header">
@@ -518,9 +508,8 @@ if not st.session_state.logged_in:
     
     st.stop()
 
-# --------------------------
 # Main Application (After Login)
-# --------------------------
+
 # Sidebar
 with st.sidebar:
     st.markdown(f"""
@@ -670,3 +659,5 @@ Only give the feedback after the interview if the candidate ask the feedback bef
                 st.error(f"🤖 Error generating response: {str(e)}")
 else:
     st.warning("⚠️ Please upload your resume and select a company to start the interview.", icon="⚠️")
+    
+    
