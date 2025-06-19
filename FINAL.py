@@ -333,7 +333,7 @@ init_session_state()
 
 
 # Database Configuration
-MONGO_URI = st.secrets["MONGO_URI"] 
+MONGO_URI = "mongodb+srv://suggalasaicharan789:Saicharan-18@cluster0.zpo87.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "FastTrackHire"
 
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
