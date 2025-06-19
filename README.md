@@ -23,7 +23,7 @@ FastTrackHire is an AI-powered mock interview web application built with **Pytho
 ![My Project Logo](https://github.com/CharanSuggala26/MockInterviews/blob/main/diagrams/Architecture.png)
 
 ## Work Flow 
-![My Project Logo](https://example.com/logo.png)
+![My Project Logo](https://github.com/CharanSuggala26/MockInterviews/blob/main/diagrams/Workflow.png)
 
 
 ## 🚀 How to Run
