@@ -329,16 +329,20 @@ def init_session_state():
 
 init_session_state()
 
-# Database Setup
-MONGO_URI = st.secrets.get("MONGO_URI", os.getenv("MONGO_URI", "mongodb://localhost:27017"))
+
+
+
+# Database Configuration
+MONGO_URI = st.secrets["MONGO_URI"] 
 DB_NAME = "FastTrackHire"
+
+client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
 
 def get_db_connection():
     try:
-        client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+        # Ping the server to check connection
         client.admin.command('ping')
         db = client[DB_NAME]
-        st.success("✅ Connected to MongoDB successfully!")
         return db
     except ConnectionFailure as e:
         st.error(f"🔌 Connection Error: {str(e)}")
@@ -360,7 +364,6 @@ def init_db():
             return False
     return False
 
-# Save interview session to database
 def save_interview_session(user_id, company, resume_text, chat_history, feedback):
     db = get_db_connection()
     if db is None:
@@ -380,11 +383,12 @@ def save_interview_session(user_id, company, resume_text, chat_history, feedback
         st.error(f"💾 Error saving interview session: {str(e)}")
         return False
 
+# Initialize the database at app start
 if not init_db():
     st.error("🚨 Failed to initialize database. Please check your MONGO_URI settings in the deployment environment.")
     st.stop()
 
-# User Authentication
+
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -423,6 +427,7 @@ def verify_user(email, password):
     except Exception as e:
         st.error(f"🔐 Error: {str(e)}")
         return None
+
 
 # PDF Processing
 def process_pdf(file):
