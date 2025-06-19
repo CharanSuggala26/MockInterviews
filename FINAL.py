@@ -8,7 +8,6 @@ from groq import Groq
 import os
 import base64
 
-# CSS Styling
 def load_css():
     st.markdown("""
     <style>
@@ -332,7 +331,7 @@ init_session_state()
 
 
 
-# Database Configuration
+# Hardcoded because lot of issues during deployment
 MONGO_URI = "mongodb+srv://suggalasaicharan789:Saicharan-18@cluster0.zpo87.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "FastTrackHire"
 
@@ -340,7 +339,6 @@ client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
 
 def get_db_connection():
     try:
-        # Ping the server to check connection
         client.admin.command('ping')
         db = client[DB_NAME]
         return db
@@ -383,7 +381,7 @@ def save_interview_session(user_id, company, resume_text, chat_history, feedback
         st.error(f"💾 Error saving interview session: {str(e)}")
         return False
 
-# Initialize the database at app start
+
 if not init_db():
     st.error("🚨 Failed to initialize database. Please check your MONGO_URI settings in the deployment environment.")
     st.stop()
@@ -429,7 +427,6 @@ def verify_user(email, password):
         return None
 
 
-# PDF Processing
 def process_pdf(file):
     try:
         with pdfplumber.open(file) as pdf:
@@ -439,7 +436,6 @@ def process_pdf(file):
         st.error(f"📄 Error processing PDF: {str(e)}")
         return None
 
-# Streamlit UI
 if not st.session_state.logged_in:
     st.markdown("""
     <div class="header">
@@ -596,7 +592,7 @@ with chat_container:
             """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# User Input
+# Input
 if st.session_state.resume_uploaded and st.session_state.company != "Select a company":
     user_input = st.chat_input("💬 Type your response here...", key="chat_input")
     
@@ -604,7 +600,6 @@ if st.session_state.resume_uploaded and st.session_state.company != "Select a co
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         st.session_state.question_count += 1
         
-        # Generate AI response using the provided prompt
         if st.session_state.chat_history and st.session_state.chat_history[-1]["role"] == "user" and not st.session_state.interview_complete:
             prompt = f"""
 You are an interviewer from **{st.session_state.company}** conducting a technical interview.
