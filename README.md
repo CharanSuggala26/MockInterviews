@@ -18,6 +18,12 @@ FastTrackHire is an AI-powered mock interview web application built with **Pytho
 - LLaMA3-8B-8192 (via Grok) 🧠  
 - Resume Parsing and Contextual Question Generation 📄
 - Natural Language Processing
+  
+## Architecture Diagram
+![My Project Logo](https://example.com/logo.png)
+
+## Work Flow 
+![My Project Logo](https://example.com/logo.png)
 
 
 ## 🚀 How to Run
