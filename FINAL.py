@@ -330,8 +330,7 @@ init_session_state()
 
 
 # Hardcoded because lot of issues during deployment 
-# IF THERE ARE NO PROBLEMS DURING DEPLOYMENT KEEP
-# IT IN THE SECRETS FILE 
+
 MONGO_URI = "mongodb+srv://suggalasaicharan789:Saicharan-18@cluster0.zpo87.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "FastTrackHire"
 
