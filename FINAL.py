@@ -329,7 +329,8 @@ def init_session_state():
 init_session_state()
 
 
-# Hardcoded because lot of issues during deployment IF THERE ARE NO PROBLEMS DURING DEPLOYMENT KEEP
+# Hardcoded because lot of issues during deployment 
+# IF THERE ARE NO PROBLEMS DURING DEPLOYMENT KEEP
 # IT IN THE SECRETS FILE 
 MONGO_URI = "mongodb+srv://suggalasaicharan789:Saicharan-18@cluster0.zpo87.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 DB_NAME = "FastTrackHire"
@@ -445,7 +446,7 @@ if not st.session_state.logged_in:
 
     col1, col2 = st.columns([1, 1], gap="large")
     
-    # Login Form
+    # Login
     with col1:
         if st.session_state.show_login:
             with st.container():
@@ -474,7 +475,7 @@ if not st.session_state.logged_in:
                 
                 st.markdown('</div>', unsafe_allow_html=True)
     
-    # Signup Form
+    # Signup 
     with col2:
         if st.session_state.show_signup:
             with st.container():
