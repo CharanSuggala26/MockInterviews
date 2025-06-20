@@ -1,3 +1,5 @@
 .qodo
 .streamlit
 .gitignore
+.activity_diagram
+.component_diagram
