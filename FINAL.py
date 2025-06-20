@@ -508,9 +508,9 @@ if not st.session_state.logged_in:
     
     st.stop()
 
-# Main Application (After Login)
+# Main Application  will be loaded after Login
 
-# Sidebar
+# Sidebar for taking inputs(i.e Resume,Target Company)
 with st.sidebar:
     st.markdown(f"""
     <div class="sidebar-profile">
@@ -548,7 +548,7 @@ with st.sidebar:
     if company != "Select a company":
         st.session_state.company = company
     
-    # Interview Instructions
+    # Interview Instructions in the side bar
     st.markdown("""
     <div class="instructions-card fade-in">
         <h4>📋 Interview Instructions</h4>
