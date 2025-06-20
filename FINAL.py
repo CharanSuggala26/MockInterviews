@@ -562,7 +562,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# Main Content Area
+# Main Content Area i.e Chat Interface for Interview
 st.markdown(f"""
 <div class="header">
     <h1>👨‍💻 FastTrackHire</h1>
@@ -570,7 +570,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Chat Interface
+# Chat Interface contains user input and chat history
 chat_container = st.container()
 with chat_container:
     st.markdown('<div class="chat-container">', unsafe_allow_html=True)
@@ -591,7 +591,7 @@ with chat_container:
             """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-# Input
+# Input will be taken here
 if st.session_state.resume_uploaded and st.session_state.company != "Select a company":
     user_input = st.chat_input("💬 Type your response here...", key="chat_input")
     
